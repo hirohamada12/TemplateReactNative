@@ -1,0 +1,22 @@
+{
+  "template.outBoarding.subTitleSlide1": "Test test tiếng việt",
+  "template.button.confirm": "Đồng ý",
+  "template.button.cancel": "Đóng",
+  "template.button.next": "Tiếp",
+  "template.button.start": "Bắt đầu",
+  "template.button.login": "Đăng nhập",
+  "template.button.register": "Đăng kí",
+  "template.validate.email": "Email không đúng định dạng",
+  "template.validate.require": "Vui lòng nhập {field}",
+  "template.validate.min": "Số ký tự tối thiểu là {min}",
+  "template.validate.max": "Số ký tự tối đa là {max}",
+  "template.validate.oneOf": "{file1} phải giống với {file1}",
+  "template.modalMessage.titleDefault": "Thông báo",
+  "template.navigation.home": "Trang chủ",
+  "template.navigation.settings": "Cài đặt",
+  "template.navigation.notifications": "Thông báo",
+  "template.label.firstName": "Tên",
+  "template.label.lastName": "Họ",
+  "template.label.age": "Tuổi",
+  "template.modalMessage.titleError": "Có lỗi xảy ra"
+}
