@@ -9,6 +9,7 @@ import {Layout} from 'constant';
 import {useAuth} from 'context';
 import Storage from 'utils/Storage';
 import {COMMON} from 'constant';
+import Log from 'logger'
 
 const ANI_SIZE_WIDTH = Layout.screen.width;
 const Name = 'Login';
@@ -21,6 +22,8 @@ const Login = () => {
     const [isSigningInProgress, setIsSigningInProgress] = useState(false);
     const _signIn = async () => {
         try {
+            Log.info('test')
+            console.log('test')
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
             setIsSigningInProgress(true);

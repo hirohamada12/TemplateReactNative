@@ -29,6 +29,8 @@ module.exports = {
                     'api': './src/API',
                     'store': './src/store',
                     'store/*': './src/store/*',
+                    'module/*': './src/Module/*',
+                    'logger': './src/Module/Logger',
                 },
             },
         ],
