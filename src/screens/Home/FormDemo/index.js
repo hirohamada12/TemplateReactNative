@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
-import {Button, Div} from 'react-native-magnus';
-import {Colors} from 'styles';
-import {registerScreen} from 'navigation/utils';
-import {Input, Screen, SelectInput} from 'components';
+import { Button, Div } from 'react-native-magnus';
+import { Colors } from 'styles';
+import { registerScreen } from 'navigation/utils';
+import { Input, Screen, SelectInput } from 'components';
 
-import {FormProvider, useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import * as t from 'translations/msg';
 import trans from 'translations/trans';
@@ -16,7 +16,7 @@ const Name = 'FormDemo';
 const FormDemoParam = {
     [Name]: {
         headerTitle: 'Form',
-        headerStyle: {backgroundColor: Colors.White},
+        headerStyle: { backgroundColor: Colors.White },
         headerShown: true,
     },
 };
@@ -31,7 +31,7 @@ const FormSchema = yup.object().shape({
         .integer(),
 });
 
-const FormDemo = ({...props}) => {
+const FormDemo = ({ ...props }) => {
 
     const FormFiles = {
         firstName: 'firstName',
@@ -63,13 +63,13 @@ const FormDemo = ({...props}) => {
                         defaultValue={''}
                     />
                     <SelectInput
-                        style={{marginTop: 10}}
+                        style={{ marginTop: 10 }}
                         label={(trans(t.form.firstName))}
                         name={FormFiles.firstName}
                         defaultValue={''}
                     />
                     <Input
-                        style={{marginTop: 10}}
+                        style={{ marginTop: 10 }}
                         label={(trans(t.form.age))}
                         name={FormFiles.age}
                         defaultValue={''}

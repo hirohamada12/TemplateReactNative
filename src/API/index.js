@@ -1,20 +1,12 @@
 import axios from 'axios';
 import ENV from 'react-native-config';
 import _ from 'lodash';
-import {COMMON, STATUS} from 'constant';
+import { COMMON, STATUS, ENV } from 'constant';
 import Storage from 'utils/Storage';
-import {Dialog} from 'components';
+import { Dialog } from 'components';
 
-/**
- * @author AnhVTN11
- * @type {AxiosInstance}
- */
 
-/**
- * @description create instance
- * @type {AxiosInstance}
- */
-const client = axios.create({
+export const client = axios.create({
     baseURL: ENV.API_BASE_URL,
     headers: {
         'Content-Type': 'application/json',
@@ -22,30 +14,26 @@ const client = axios.create({
 });
 
 
-/**
- * @description set  token auth to any request
- */
+
 client.interceptors.request.use((config) => {
     // const token = await Storage.get(COMMON.USER_DATA);
     // config.headers.Authorization = token ? `Bearer ${token}` : '';
 
-    Dialog.showLoading();
+    // Dialog.showLoading();
     return config;
 });
 
-/**
- * @description interceptors
- */
+
 client.interceptors.response.use(
     response => {
-        Dialog.hideLoading();
+        // Dialog.hideLoading();
         return response;
     },
     error => {
-        Dialog.hideLoading();
-        if (!error.response) {
-            throw new Error('Connection Error');
-        }
+        //Dialog.hideLoading();
+        // if (!error.response) {
+        //     throw new Error('Connection Error');
+        // }
         return Promise.reject(error);
     },
 );
@@ -136,13 +124,13 @@ const getApiErrorMessage = (err) => {
 };
 
 export const apiErrorMesageMapping = [
-    {statusCode: STATUS.UNKNOWN, message: 'Some things went wrong.'},
-    {statusCode: STATUS.NETWORK_ERROR, message: 'Network Error.'},
-    {statusCode: STATUS.REQUEST_TIME_OUT, message: 'Request time out.'},
-    {statusCode: STATUS.UNAUTHORIZED, message: 'Sorry, you session is expried please login again.'},
-    {statusCode: STATUS.FORBIDDEN, message: 'Sorry, you don\'t have access to this page.'},
-    {statusCode: STATUS.INTERNAL_SERVER_ERROR, message: 'Sorry, the server is reporting an error.'},
-    {statusCode: STATUS.SERVER_UNAVAILABLE, message: 'Sorry, the service is unavailable'},
+    { statusCode: STATUS.UNKNOWN, message: 'Some things went wrong.' },
+    { statusCode: STATUS.NETWORK_ERROR, message: 'Network Error.' },
+    { statusCode: STATUS.REQUEST_TIME_OUT, message: 'Request time out.' },
+    { statusCode: STATUS.UNAUTHORIZED, message: 'Sorry, you session is expried please login again.' },
+    { statusCode: STATUS.FORBIDDEN, message: 'Sorry, you don\'t have access to this page.' },
+    { statusCode: STATUS.INTERNAL_SERVER_ERROR, message: 'Sorry, the server is reporting an error.' },
+    { statusCode: STATUS.SERVER_UNAVAILABLE, message: 'Sorry, the service is unavailable' },
 ];
 
-export {setAuthorization, _get, _post};
+export { setAuthorization, _get, _post };

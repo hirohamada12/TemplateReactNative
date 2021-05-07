@@ -1,7 +1,8 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
-import {IntlProvider} from 'react-intl';
-import {Text} from 'react-native';
+import { IntlProvider } from 'react-intl';
+import { Text } from 'react-native';
+
 
 export class LanguageProvider extends React.Component {
     constructor(props) {
@@ -9,9 +10,9 @@ export class LanguageProvider extends React.Component {
     }
 
     render() {
-        const {language} = this.context;
+        const { language } = this.context;
         const _language = language === 'vi' || !language ? 'vi' : 'en';
-        const {messages, children} = this.props;
+        const { messages, children } = this.props;
         return (
             <IntlProvider
                 locale={_language}
