@@ -1,5 +1,6 @@
 import { TYPES } from '../actions/GlobalActions';
 
+//state co chua cap gia tri key-value voi key la ten cua request, value la errorMessage neu co cua request
 const errorReducer = (state = {}, { payload, type }) => {
   if (type === TYPES.GLOBAL_RESET) {
     return {};
@@ -11,7 +12,8 @@ const errorReducer = (state = {}, { payload, type }) => {
     const [, requestName, requestState] = matches;
     return {
       ...state,
-      [requestName]: requestState === 'ERROR' ? payload.error : null,
+      [requestName]: requestState === 'ERROR' ? JSON.stringify(payload) : null,
+
     };
   }
 

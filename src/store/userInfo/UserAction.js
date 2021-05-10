@@ -1,5 +1,6 @@
 import ActionUtil from '../ActionUtil';
 import UserEffect from './UserEffect';
+import { setAuthorization, _get, _post } from '../../API/'
 
 export default class UserAction {
     static LOG_IN_REQUEST = 'Login_REQUEST';
@@ -12,25 +13,29 @@ export default class UserAction {
     static TICKET_VALIDATE_ERROR = 'TicketValidate_ERROR';
     static TICKET_VALIDATE_RESET = 'TicketValidate_RESET';
 
-    static LOG_OUT_BEGIN = 'LOG_OUT_BEGIN';
+    static LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
     static LOG_OUT_SUCCESS = 'LOG_OUT_SUCESS';
-    static LOG_OUT_FAILED = 'LOG_OUT_FAILED';
+    static LOG_OUT_ERROR = 'LOG_OUT_ERROR';
 
-    static LoginSSO(username, pass) {
+    static LoginSSO(username, password) {
         return async (dispatch) => {
-            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_IN_REQUEST, UserEffect.DoLogin, username, pass)
+            const body = {
+                username, password,
+                authMethod: "JWT"
+            }
+            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_IN_REQUEST, _post, 'sso/login', body)
         }
     }
 
     static ValidateTicket(ticket) {
         return async (dispatch) => {
-            await ActionUtil.createThunkEffect(dispatch, UserAction.TICKET_VALIDATE_BEGIN, UserEffect.SendTicketValidate, ticket)
+            await ActionUtil.createThunkEffect(dispatch, UserAction.TICKET_VALIDATE_REQUEST, _get, 'sso/serviceValidate', ticket)
         }
     }
 
     static LogoutSSO(ticket) {
         return async (dispatch) => {
-            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_OUT_BEGIN, UserEffect.LogOut, ticket)
+            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_OUT_REQUEST, _get, 'sso/logout', ticket)
         }
     }
 }

@@ -19,7 +19,7 @@ client.interceptors.request.use((config) => {
     // const token = await Storage.get(COMMON.USER_DATA);
     // config.headers.Authorization = token ? `Bearer ${token}` : '';
 
-    // Dialog.showLoading();
+    Dialog.showLoading();
     return config;
 });
 
@@ -30,10 +30,10 @@ client.interceptors.response.use(
         return response;
     },
     error => {
-        //Dialog.hideLoading();
-        // if (!error.response) {
-        //     throw new Error('Connection Error');
-        // }
+        Dialog.hideLoading();
+        if (!error.response) {
+            throw new Error('Connection Error');
+        }
         return Promise.reject(error);
     },
 );
@@ -80,8 +80,8 @@ const _get = (_url, _params) => {
  * @returns {Promise<AxiosResponse<any> | void>}
  * @private
  */
-const _post = (_url, _params) => {
-    return client.post(_url, _params).then(
+const _post = (_url, _body, _params = {}) => {
+    return client.post(_url, _body, { params: _params }).then(
         response => response.data,
         error => {
             if (error.response && error.response.status === 401) {
