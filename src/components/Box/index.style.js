@@ -1,4 +1,4 @@
-import {Colors, FontSize} from 'styles';
+import { Colors, FontSize } from 'styles';
 
 export default {
     row: {
@@ -9,6 +9,9 @@ export default {
     },
     card: {
         borderRadius: FontSize.Medium,
+    },
+    smokeBorder: {
+        borderRadius: 20, borderColor: Colors.Gray
     },
     center: {
         alignItems: 'center',
@@ -27,16 +30,16 @@ export default {
     },
     shadow: {
         shadowColor: Colors.black,
-        shadowOffset: {width: 1, height: 1},
+        shadowOffset: { width: 1, height: 1 },
         shadowOpacity: 0.2,
         shadowRadius: 20,
         elevation: 4,
     },
-    accent: {backgroundColor: Colors.accent},
-    primary: {backgroundColor: Colors.Primary},
-    secondary: {backgroundColor: Colors.Secondary},
-    black: {backgroundColor: Colors.Black},
-    white: {backgroundColor: Colors.White},
-    gray: {backgroundColor: Colors.Gray},
+    accent: { backgroundColor: Colors.accent },
+    primary: { backgroundColor: Colors.Primary },
+    secondary: { backgroundColor: Colors.Secondary },
+    black: { backgroundColor: Colors.Black },
+    white: { backgroundColor: Colors.White },
+    gray: { backgroundColor: Colors.Gray },
 };
 

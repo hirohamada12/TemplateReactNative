@@ -1,5 +1,4 @@
 import axios from 'axios';
-import ENV from 'react-native-config';
 import _ from 'lodash';
 import { COMMON, STATUS, ENV } from 'constant';
 import Storage from 'utils/Storage';

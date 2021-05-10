@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Easing, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
-import {Colors} from 'styles';
-import {Input} from 'react-native-magnus';
-import {useController, useFormContext} from 'react-hook-form';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Easing, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Colors } from 'styles';
+import { Input } from 'react-native-magnus';
+import { useController, useFormContext } from 'react-hook-form';
 
 const TextField = (props) => {
     const {
@@ -20,12 +20,13 @@ const TextField = (props) => {
 
     const formContext = useFormContext();
 
-    const {control, errors} = formContext;
+    const { control, errors } = formContext;
 
 
-    const {field} = useController({name, rules, defaultValue, control});
+    const { field } = useController({ name, rules, defaultValue, control });
 
     useEffect(() => {
+
         Animated.timing(focusAnim, {
             toValue: isFocused || !!field.value ? 1 : 0,
             duration: 150,
@@ -33,6 +34,8 @@ const TextField = (props) => {
             useNativeDriver: true,
         }).start();
     }, [focusAnim, isFocused, field.value]);
+
+
 
     let color = isFocused ? Colors.Blue : '#B9C4CA';
     if (errors[name]) {
@@ -56,6 +59,7 @@ const TextField = (props) => {
                 onFocus={(event) => {
                     setIsFocused(true);
                     field.onFocus?.(event);
+
                 }}
             />
             <TouchableWithoutFeedback onPress={() => inputRef.current?.focus()}>
