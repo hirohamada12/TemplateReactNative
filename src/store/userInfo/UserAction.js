@@ -2,13 +2,15 @@ import ActionUtil from '../ActionUtil';
 import UserEffect from './UserEffect';
 
 export default class UserAction {
-    static LOG_IN_BEGIN = 'LOG_IN_BEGIN';
-    static LOG_IN_SUCCESS = 'LOG_IN_SUCESS';
-    static LOG_IN_FAILED = "LOG_IN_FAILED";
+    static LOG_IN_REQUEST = 'Login_REQUEST';
+    static LOG_IN_SUCCESS = 'Login_SUCESS';
+    static LOG_IN_ERROR = "Login_ERROR";
+    static LOG_IN_RESET = "Login_RESET";
 
-    static TICKET_VALIDATE_BEGIN = 'TICKET_VALIDATE_BEGIN';
-    static TICKET_VALIDATE_SUCCESS = 'TICKET_VALIDATE_SUCCESS';
-    static TICKET_VALIDATE_FAILED = 'TICKET_VALIDATE_FAILED';
+    static TICKET_VALIDATE_REQUEST = 'TicketValidate_REQUEST';
+    static TICKET_VALIDATE_SUCCESS = 'TicketValidate_SUCCESS';
+    static TICKET_VALIDATE_ERROR = 'TicketValidate_ERROR';
+    static TICKET_VALIDATE_RESET = 'TicketValidate_RESET';
 
     static LOG_OUT_BEGIN = 'LOG_OUT_BEGIN';
     static LOG_OUT_SUCCESS = 'LOG_OUT_SUCESS';
@@ -16,7 +18,7 @@ export default class UserAction {
 
     static LoginSSO(username, pass) {
         return async (dispatch) => {
-            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_IN_BEGIN, UserEffect.DoLogin, username, pass)
+            await ActionUtil.createThunkEffect(dispatch, UserAction.LOG_IN_REQUEST, UserEffect.DoLogin, username, pass)
         }
     }
 
