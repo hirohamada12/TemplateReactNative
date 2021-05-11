@@ -8,6 +8,7 @@ const Colors = {
     LightRed: '#FF7979',
     Blue: '#0065E9',
     LightBlue: '#F4F5F6',
+    LightPink: '#ffebcd',
     Purple: '#522974',
     Green: '#A1C652',
     Transparent: 'transparent',

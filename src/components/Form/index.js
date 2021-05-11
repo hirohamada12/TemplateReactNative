@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Input, Box, Screen, SelectInput } from 'components';
+import { View, StyleSheet } from 'react-native';
+
+import { Input, Box, Screen, SelectInput, NewInput } from 'components';
 import { Button } from '../Button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { Colors, SCREEN_HEIGHT, SCREEN_WIDTH } from 'styles';
 const initialValidate = {
     username: yup.string().required(),
     password: yup.string().required(),
@@ -22,7 +25,9 @@ const initialProperty = {
 
 
 
-export const Form = ({ property, validate }) => {
+export const Form = ({ property, validate, containerStyle }) => {
+    //containerStyle: predefined style cho toan bo form
+
     const data = property === undefined ? initialProperty : property;
     const valueList = Object.values(data);
     const defaultValues = Object.keys(data).reduce((prev, current, index) => ({
@@ -41,16 +46,26 @@ export const Form = ({ property, validate }) => {
         console.log('data', data);
     };
 
-
     return (
+        <FormProvider {...formMethods}>
+            <View style={[styles.formContainer, containerStyle]} center >
+                {Object.keys(data).map((property, index) => <NewInput index={index} name={property} label={property}
+                    inputStyle={styles.inputStyle} containerStyle={{ marginBottom: 10 }} />)}
+                <Button title="Dang nhap" onPress={formMethods.handleSubmit(onSubmit, onErrors)} containerStyle={{ marginVertical: 10 }} />
+            </View>
 
-        <Box style={{ width: '100%', height: '100%', borderWidth: 1, borderColor: 'black', justifyContent: 'space-between', paddingVertical: 10 }} center >
-            <FormProvider {...formMethods}>
-                {Object.keys(data).map((property, index) => <Input index={index} name={property} label={property} style={{ height: '25%', width: '80%' }} />)}
-                <Button customContainer={{ width: '60%', height: '25%' }} title="Dang nhap" onPress={formMethods.handleSubmit(onSubmit, onErrors)} />
-
-            </FormProvider>
-        </Box>
-
+        </FormProvider>
     )
 }
+
+//default style
+const styles = StyleSheet.create({
+    formContainer: {
+        alignItems: 'center', paddingVertical: 10,
+        borderRadius: 15
+    },
+    inputStyle: {
+        borderColor: Colors.LightGray, borderWidth: 1,
+        borderRadius: 10
+    }
+})

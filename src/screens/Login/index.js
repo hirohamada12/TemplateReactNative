@@ -22,14 +22,9 @@ const Login = () => {
 
     return (
         <Container borderRadius={75} scroll footer={<Footer />}>
-            <Box style={{ marginTop: 0 }} padding={40}>
-                <Text style={{
-                    marginBottom: 8,
-                }} bold h1 primary center>
-                    HI !
-                </Text>
+            <Box style={{ marginTop: 0, }} padding={30}>
                 <Text bold h2 style={{
-                    padding: 8,
+                    padding: 1,
                 }} primary center>
                     Vui lòng đăng nhập
                 </Text>
@@ -40,6 +35,7 @@ const Login = () => {
                         paddingRight: 20,
                         alignItems: 'center',
                         marginBottom: 24,
+
                     }}>
                     <Box style={{ width: 40, margin: 3, height: 4 }}
                         backgroundColor={'rgb(46, 77, 159)'} />
@@ -48,16 +44,7 @@ const Login = () => {
                     <Box style={{ width: 40, margin: 3, height: 4 }}
                         backgroundColor={'rgb(77,183, 72)'} />
                 </Box>
-                <Box style={{ width: '100%', height: '50%' }}>
-                    {/* <Box center style={{ marginBottom: 12 }}>
-                        <TextInput placeholder="Username" style={{ padding: 5, width: '90%', height: '25%' }} />
-                        <TextInput placeholder="Password" style={{ padding: 5, width: '90%', height: '25%' }} secureTextEntry={true} />
-                        <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', width: '50%', height: '25%' }}>
-                            <Text>Đăng nhập</Text>
-                        </TouchableOpacity>
-                    </Box> */}
-                    <Form />
-                </Box>
+                <Form containerStyle={{ backgroundColor: Colors.LightPink, marginTop: 30 }} />
                 <Box center middle backgroundColor={Colors.White}
                     style={{
                         marginTop: 20,

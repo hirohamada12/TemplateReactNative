@@ -1,4 +1,4 @@
-import {Colors, FontSize} from 'styles';
+import { Colors, FontSize } from 'styles';
 
 export default {
     // default style
@@ -27,14 +27,14 @@ export default {
         fontWeight: '200',
     },
     // position
-    center: {textAlign: 'center'},
-    right: {textAlign: 'right'},
+    center: { textAlign: 'center' },
+    right: { textAlign: 'right' },
     // colors
-    primary: {color: Colors.Primary},
-    secondary: {color: Colors.Secondary},
-    black: {color: Colors.Black},
-    white: {color: Colors.White},
-    gray: {color: Colors.Gray},
+    primary: { color: Colors.Primary },
+    secondary: { color: Colors.Secondary },
+    black: { color: Colors.Black },
+    white: { color: Colors.White },
+    gray: { color: Colors.Gray },
     // fonts
     h1: FontSize.h1,
     h2: FontSize.h2,

@@ -1,19 +1,19 @@
 import React from 'react';
 import { Text, Image, TouchableOpacity, View, StyleSheet } from 'react-native';
-import { Colors } from 'styles'
+import { Colors, SCREEN_HEIGHT, SCREEN_WIDTH } from 'styles'
 
 export const Button = props => {
     const {
-        customContainer, customImage, customText, imageSource, title, onPress
+        containerStyle, imageStyle, textStyle, imageSource, title, onPress
     } = props;
 
     return (
 
-        <TouchableOpacity style={[style.container, customContainer]} onPress={onPress}>
-            {imageSource && <View style={[style.imageView, customImage]}>
+        <TouchableOpacity style={[style.container, containerStyle]} onPress={onPress}>
+            {imageSource && <View style={[style.imageView, imageStyle]}>
                 <Image source={imageSource} />
             </View>}
-            <Text style={[style.text, customText]}>{title}</Text>
+            <Text style={[style.text, textStyle]}>{title}</Text>
         </TouchableOpacity>
 
     )
@@ -21,8 +21,8 @@ export const Button = props => {
 
 const style = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        justifyContent: 'center', alignItems: 'center',
+        flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
+        width: SCREEN_WIDTH / 2, height: SCREEN_WIDTH / 8,
         borderColor: Colors.LightGray, borderWidth: 1, borderRadius: 20
     },
     imageView: {
