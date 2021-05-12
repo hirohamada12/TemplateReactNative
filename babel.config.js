@@ -10,6 +10,7 @@ module.exports = {
                 'alias': {
                     'assets/*': './src/assets/*',
                     'images': './src/assets/images',
+                    'icons': './src/assets/icons',
                     'navigation': './src/navigation',
                     'navigation/*': './src/navigation/*',
                     'screens': './src/screens',

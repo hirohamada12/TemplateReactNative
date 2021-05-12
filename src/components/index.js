@@ -7,10 +7,10 @@ import Input from './TextInput';
 import SelectInput from './SelectInput';
 import { Divider } from './Divider';
 import { Button } from './Button';
-import { Form } from './Form';
 import Dialog from './ModalComponent/DialogBoxService';
 import DialogBox from './ModalComponent';
 import NewInput from './NewInput';
+import DropdownPicker from './DropdownPicker';
 export {
     Box,
     Text,
@@ -22,6 +22,7 @@ export {
     Divider,
     Dialog,
     DialogBox,
-    Form, NewInput,
-    Button
+    NewInput,
+    Button,
+    DropdownPicker
 };

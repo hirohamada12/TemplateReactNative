@@ -24,6 +24,7 @@ const Colors = {
     BlueSky: '#54BDDB',
     TextPrimary: '#202731',
     background: '#FFFFFF',
+    Smoke: '#dcdcdc'
 };
 
 export default Colors;

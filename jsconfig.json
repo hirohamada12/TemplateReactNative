@@ -4,6 +4,7 @@
         "paths": {
           "app/*": ["src/app/*"],
           "assets/*": ["src/assets/*"],
+          "icons":["src/assets/icons"],
           "images": ["/src/assets/images"],
           "navigation": ["/src/navigation"],
           "navigation/*": ["/src/navigation/*"],
