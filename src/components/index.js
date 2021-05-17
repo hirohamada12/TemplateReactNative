@@ -11,6 +11,8 @@ import Dialog from './ModalComponent/DialogBoxService';
 import DialogBox from './ModalComponent';
 import NewInput from './NewInput';
 import DropdownPicker from './DropdownPicker';
+import ModalPicker from './ModalPicker';
+import DateTimePicker from './DateTimePicker';
 export {
     Box,
     Text,
@@ -24,5 +26,5 @@ export {
     DialogBox,
     NewInput,
     Button,
-    DropdownPicker
+    DropdownPicker, ModalPicker, DateTimePicker
 };

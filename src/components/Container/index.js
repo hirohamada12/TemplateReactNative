@@ -37,7 +37,7 @@ const Container = ({ children, hideFooter, borderRadius, footer, scroll }: Conta
             <KeyboardAvoidingView enabled style={{ flexGrow: 1 }} keyboardVerticalOffset={2}
                 behavior={`${Platform.OS === 'android' ? 'height' : 'padding'}`}>
                 <Box flex={1}>
-                    <ScrollView ref={scrollRef} style={{ flex: 1 }} bounces={false} keyboardShouldPersistTaps="always">
+                    <ScrollView ref={scrollRef} style={{ flex: 1 }} bounces={false} keyboardShouldPersistTaps="always" nestedScrollEnabled={true}>
 
                         <Box flex={1} style={{ overflow: 'hidden' }}>
                             {

@@ -14,7 +14,6 @@ const NewInput = props => {
     const { field } = useController({ name, rules, defaultValue, control });
     const [focus, setIsFocused] = useState(false);
 
-
     const getBorderColor = () => {
         return errors[name] ? { borderColor: Colors.Red } : focus ? { borderColor: Colors.BlueSky } : { borderColor: Colors.LightGray }
     }
@@ -22,7 +21,7 @@ const NewInput = props => {
     return (
         <View style={[style.container, containerStyle]} index={index}>
             {//truong hop label khong thang hang voi text
-                <View style={[{ paddingVertical: 0 }, horizon && { flexDirection: 'row', alignItems: 'center' }]}>
+                <View style={horizon && { flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={[style.label, labelStyle]}>{label}</Text>
                     <TextInput style={[horizon ? style.horizonInput : style.input, inputStyle, getBorderColor()]} placeholder={placeholder}
                         onChangeText={field.onChange} value={field.value}

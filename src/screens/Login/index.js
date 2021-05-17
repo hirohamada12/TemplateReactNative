@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-community/google-signin';
 //Component
 import { registerScreen } from 'navigation/utils';
-import { Box, Container, LoginBackground, Text, Input, Form } from 'components';
-import { Colors } from 'styles';
+import { Box, Container, LoginBackground, Text, Input, DropdownPicker, ModalPicker, DateTimePicker } from 'components';
+import { Colors, SCREEN_HEIGHT, SCREEN_WIDTH } from 'styles';
 import { Layout } from 'constant';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -22,11 +22,12 @@ const Login = () => {
     const initialValidate = {
         username: yup.string().required(),
         password: yup.string().required(),
+        picker: yup.string().required()
     }
     const formMethods = useForm({
         resolver: yupResolver(yup.object().shape(initialValidate)),
         defaultValues: {
-            username: "", password: ""
+            username: "", password: "", picker: ""
         }
     })
 
@@ -66,14 +67,22 @@ const Login = () => {
                     <View style={styles.formContainer} >
                         <NewInput name='username' label='Tên đăng nhập' inputStyle={styles.inputStyle} containerStyle={{ marginBottom: 10 }} horizon={true} />
                         <NewInput name='password' label='Mật khẩu' inputStyle={styles.inputStyle} containerStyle={{ marginBottom: 10 }} />
-                        {/* <DropdownPicker name='picker' label="Chọn" valueList={[{
-                            value: 'Banana',
+                        {/* <DropdownPicker name='picker' label="Chọn" itemList={[{
+                            value: 'Banana', label: '1'
                         }, {
-                            value: 'Mango',
+                            value: 'Mango', label: '2'
                         }, {
-                            value: 'Pear',
+                            value: 'Pear', label: '3'
+                        },
+                        {
+                            value: 'Sen', label: '4'
+                        },
+                        {
+                            value: 'Rarr', label: '5'
                         }]}
-                            containerStyle={{ marginBottom: 10, }} /> */}
+                            width={SCREEN_WIDTH / 1.4} height={SCREEN_HEIGHT / 25} pickerStyle={{ marginTop: 2 }} errorStyle={{ marginBottom: 5 }} /> */}
+                        {/* <ModalPicker name='modalpicker' label='Chon' /> */}
+                        <DateTimePicker name='picker' label='Date' containerStyle={{ marginBottom: 10 }} inputStyle={{ marginTop: 5 }} />
                         <Button title='Đăng nhập' onPress={formMethods.handleSubmit(onSubmit, onErrors)} containerStyle={{ marginVertical: 10 }} />
                     </View>
 
