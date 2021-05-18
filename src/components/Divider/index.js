@@ -1,9 +1,9 @@
-import React, {memo} from 'react';
-import {StyleSheet} from 'react-native';
+import React, { memo } from 'react';
+import { StyleSheet } from 'react-native';
 import equals from 'react-fast-compare';
 import PropTypes from 'prop-types';
-import {Div} from 'react-native-magnus';
-import {Colors} from 'styles';
+import { Div } from 'react-native-magnus';
+import { Colors } from 'styles';
 
 const styles = StyleSheet.create({
     wrap: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const DividerComponent = ({height, bg, ...props}) => {
+const DividerComponent = ({ height, bg, ...props }) => {
     return (
         <Div
             h={height * StyleSheet.hairlineWidth}

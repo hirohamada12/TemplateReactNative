@@ -21,7 +21,7 @@ const NewInput = props => {
     return (
         <View style={[style.container, containerStyle]} index={index}>
             {//truong hop label khong thang hang voi text
-                <View style={horizon && { flexDirection: 'row', alignItems: 'center' }}>
+                <View style={horizon && { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={[style.label, labelStyle]}>{label}</Text>
                     <TextInput style={[horizon ? style.horizonInput : style.input, inputStyle, getBorderColor()]} placeholder={placeholder}
                         onChangeText={field.onChange} value={field.value}
@@ -57,12 +57,14 @@ const style = StyleSheet.create({
     input: {
         height: SCREEN_HEIGHT / 20, width: SCREEN_WIDTH * 0.7,
         fontSize: 12, color: Colors.Black, marginTop: 5,
-        textDecorationLine: 'none'
+        textDecorationLine: 'none', borderWidth: 1, borderColor: Colors.Gray, borderRadius: 10,
+        paddingVertical: 0
     },
     horizonInput: {
         height: SCREEN_HEIGHT / 20, width: SCREEN_WIDTH * 0.4,
-        fontSize: 12, color: Colors.Black, marginLeft: 20,
-        textDecorationLine: 'none'
+        fontSize: 12, color: Colors.Black,
+        textDecorationLine: 'none', borderWidth: 1, borderColor: Colors.Gray, borderRadius: 10,
+        paddingVertical: 0
     },
     error: {
         fontSize: 12, color: Colors.Red,

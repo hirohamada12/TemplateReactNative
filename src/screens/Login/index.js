@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-community/google-signin';
+import { View } from 'react-native';
 //Component
 import { registerScreen } from 'navigation/utils';
 import { Box, Container, LoginBackground, Text, Input, DropdownPicker, ModalPicker, DateTimePicker } from 'components';

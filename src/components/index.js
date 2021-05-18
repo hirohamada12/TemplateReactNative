@@ -13,6 +13,8 @@ import NewInput from './NewInput';
 import DropdownPicker from './DropdownPicker';
 import ModalPicker from './ModalPicker';
 import DateTimePicker from './DateTimePicker';
+import SectionHeader from './SectionHeader';
+import { CardItem, DeleteItem } from './CardItem';
 export {
     Box,
     Text,
@@ -26,5 +28,7 @@ export {
     DialogBox,
     NewInput,
     Button,
-    DropdownPicker, ModalPicker, DateTimePicker
+    DropdownPicker, ModalPicker, DateTimePicker,
+    SectionHeader,
+    CardItem, DeleteItem
 };

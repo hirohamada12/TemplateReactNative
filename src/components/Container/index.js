@@ -1,10 +1,16 @@
 // @flow
 import React, { useEffect, useRef } from 'react';
+
 import Box from '../Box';
-import { Dimensions, Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StatusBar } from 'react-native';
+import {
+    Dimensions, Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StatusBar,
+    View, Text, TouchableOpacity,
+} from 'react-native';
 import styles from './index.style';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, FontSize } from 'styles';
+// import LeftArrow from '../../assets/icons-svg/icon-left-arrow.svg';
+const LeftArrow = require('../../assets/icons-svg/icon-left-arrow.svg').default;
 
 const bg = require('../../assets/images/logo_fis.jpg');
 
@@ -17,8 +23,11 @@ type ContainerProps = {
     hideFooter?: boolean;
     borderRadius?: number;
     scroll?: boolean;
+    backButton?: Boolean;
+    headerText?: string,
+
 }
-const Container = ({ children, hideFooter, borderRadius, footer, scroll }: ContainerProps) => {
+const Container = ({ children, hideFooter, borderRadius, footer, scroll, headerText, backButton, backButtonPress }: ContainerProps) => {
     const insets = useSafeAreaInsets();
     const scrollRef = useRef();
     const _keyboardDidShow = () => {
@@ -33,23 +42,19 @@ const Container = ({ children, hideFooter, borderRadius, footer, scroll }: Conta
 
     return (
         <Box flex={1} backgroundColor={Colors.White}>
-            <StatusBar barStyle={'light-content'} />
+            <View style={styles.header2}>
+                <Text style={{ color: Colors.BlueSky, fontSize: 20 }} numberOfLines={2}>{headerText}</Text>
+                {backButton && <TouchableOpacity onPress={backButtonPress} style={styles.backButton}>
+                    <LeftArrow width='100%' height='100%' />
+                </TouchableOpacity>}
+            </View>
             <KeyboardAvoidingView enabled style={{ flexGrow: 1 }} keyboardVerticalOffset={2}
                 behavior={`${Platform.OS === 'android' ? 'height' : 'padding'}`}>
                 <Box flex={1}>
                     <ScrollView ref={scrollRef} style={{ flex: 1 }} bounces={false} keyboardShouldPersistTaps="always" nestedScrollEnabled={true}>
 
                         <Box flex={1} style={{ overflow: 'hidden' }}>
-                            {
-                                scroll ?
-                                    <Box style={styles.header}>
-                                        <Image source={bg} style={styles.imagebgHeader} />
-                                    </Box>
-                                    :
-                                    <Box>
 
-                                    </Box>
-                            }
                             <Box flex={1} backgroundColor={Colors.white}
                                 style={{
                                     borderBottomRightRadius: borderRadius,
