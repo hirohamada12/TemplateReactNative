@@ -15,8 +15,26 @@ const options = {
 };
 
 const LapYCKTGiamSatMBD = props => {
+    const initialValidate = {
+        maKH: yup.string().required(),
+        maGCS: yup.string().required(),
+        maTram: yup.string().required(),
+        nhomNN: yup.string().required(),
+    }
+    const formMethods = useForm({
+        resolver: yupResolver(yup.object().shape(initialValidate)),
 
-    const [userInfoForm, setUserInfo] = useState(true);//true se hien form tim kiem theo user
+    })
+
+    const onSubmit = data => {
+        console.log('data', data);
+    };
+
+    const onErrors = data => {
+        console.log('data', data);
+    };
+
+    const [userInfoForm, setUserInfo] = useState(true);//radio button
     const [cardList, setCards] = useState([
         {
             id: 'KH001',
@@ -51,6 +69,52 @@ const LapYCKTGiamSatMBD = props => {
             isChecked: false
         },
     ]);
+
+
+    const deleteCard = (item, rowMap) => {
+        const newCardList = cardList.filter((value) => value.id !== item.id);
+        setCards(newCardList);
+        if (rowMap[item.id]) {
+            rowMap[item.id].closeRow();
+        }
+    }
+
+    return (
+        <Container scroll hideFooter headerText="Lap bien ban" backButton>
+            <View style={style.buttonContainer}>
+                <Button containerStyle={{ flex: 1, borderWidth: 0 }} title="Thông tin khách hàng" />
+                <Button containerStyle={{ flex: 1, borderWidth: 0 }} title="Tạo mới yêu cầu" />
+            </View>
+            <Divider height={3} />
+            <View style={style.radioContainer}>
+                <RadioButton  //radio toogle form tim kiem theo user va ko theo user
+                    value={userInfoForm}
+                    status={userInfoForm ? 'unchecked' : 'checked'}
+                    onPress={() => setUserInfo(prevState => !prevState)}
+                    color={Colors.BlueSky}
+                />
+                <Text style={style.radioText}>Không có mã khách hàng</Text>
+            </View>
+            <FormProvider {...formMethods}>
+                <View style={{ alignItems: 'center' }}>
+                    <SectionHeader containerStyle={style.sectionHeader} title='Thông tin tìm kiếm' imgSource={require("../../assets/icons/IdentityLogo.png")}
+                        imageStyle={{ height: 20, aspectRatio: 1.4 }} textStyle={{ marginLeft: 15, fontSize: 14 }} />
+                    <NewInput name='maKH' label='Mã khách hàng' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
+                    <NewInput name='maGCS' label='Mã số GCS' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
+                    <NewInput name='maTram' label='Mã trạm' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
+                    <NewInput name='nhomNN' label='Nhóm NN' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
+                    <Button containerStyle={style.searchButton} textStyle={style.searchTitle} title='Tìm kiếm' />
+                </View>
+            </FormProvider>
+            <SwipeListView recalculateHiddenLayout={true} showsVerticalScrollIndicator={false} data={cardList} renderItem={({ item }) => <CardItem item={item} />} style={{ marginTop: 20 }}
+                renderHiddenItem={({ item }, rowMap) => <DeleteItem onPress={() => deleteCard(item, rowMap)} />} keyExtractor={(item, index) => item + index} rightOpenValue={- SCREEN_WIDTH * 0.15}
+                stopRightSwipe={-SCREEN_WIDTH * 0.15} disableRightSwipe={true} />
+        </Container>
+    )
+
+}
+
+const MaKHForm = props => {
     const initialValidate = {
         maKH: yup.string().required(),
         maGCS: yup.string().required(),
@@ -59,9 +123,7 @@ const LapYCKTGiamSatMBD = props => {
     }
     const formMethods = useForm({
         resolver: yupResolver(yup.object().shape(initialValidate)),
-        defaultValues: {
-            username: "", password: "", picker: ""
-        }
+
     })
 
     const onSubmit = data => {
@@ -71,29 +133,11 @@ const LapYCKTGiamSatMBD = props => {
     const onErrors = data => {
         console.log('data', data);
     };
-
-    const deleteCard = (item, rowMap) => {
-        const newCardList = cardList.filter((value) => value.id !== item.id);
-        setCards(newCardList);
-        if (rowMap[item.id]) {
-            rowMap[item.id].closeRow();
-        }
-    }
-    const UserInfo = () => (
+    return (
         <FormProvider {...formMethods}>
             <View style={{ alignItems: 'center' }}>
-
-                <View style={style.radioContainer}>
-                    <RadioButton  //radio toogle form tim kiem theo user va ko theo user
-                        value={userInfoForm}
-                        status={userInfoForm ? 'unchecked' : 'checked'}
-                        onPress={() => setUserInfo(prevState => !prevState)}
-                        color={Colors.BlueSky}
-                    />
-                    <Text style={style.radioText}>Không có mã khách hàng</Text>
-                </View>
                 <SectionHeader containerStyle={style.sectionHeader} title='Thông tin tìm kiếm' imgSource={require("../../assets/icons/IdentityLogo.png")}
-                    imageStyle={{ height: 15, aspectRatio: 1.4 }} textStyle={{ marginLeft: 15, fontSize: 14 }} />
+                    imageStyle={{ height: 20, aspectRatio: 1.4 }} textStyle={{ marginLeft: 15, fontSize: 14 }} />
                 <NewInput name='maKH' label='Mã khách hàng' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
                 <NewInput name='maGCS' label='Mã số GCS' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
                 <NewInput name='maTram' label='Mã trạm' inputStyle={style.input} containerStyle={style.inputContainer} horizon={true} />
@@ -101,23 +145,7 @@ const LapYCKTGiamSatMBD = props => {
                 <Button containerStyle={style.searchButton} textStyle={style.searchTitle} title='Tìm kiếm' />
             </View>
         </FormProvider>
-
     )
-
-    return (
-        <Container scroll hideFooter headerText="Lap bien ban" backButton>
-            <View style={style.buttonContainer}>
-                <Button containerStyle={{ flex: 1, borderWidth: 0 }} title="Thông tin khách hàng" />
-                <Button containerStyle={{ flex: 1, borderWidth: 0 }} title="Tạo mới yêu cầu" />
-            </View>
-            <Divider height={3} />
-            <UserInfo />
-            <SwipeListView recalculateHiddenLayout={true} showsVerticalScrollIndicator={false} data={cardList} renderItem={({ item }) => <CardItem item={item} />} style={{ marginTop: 20 }}
-                renderHiddenItem={({ item }, rowMap) => <DeleteItem onPress={() => deleteCard(item, rowMap)} />} keyExtractor={(item, index) => item + index} rightOpenValue={- SCREEN_WIDTH * 0.15}
-                stopRightSwipe={-SCREEN_WIDTH * 0.15} disableRightSwipe={true} />
-        </Container>
-    )
-
 }
 
 export default registerScreen('LapYCKTGiamSat', LapYCKTGiamSatMBD, options);

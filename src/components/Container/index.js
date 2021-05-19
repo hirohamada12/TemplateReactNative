@@ -25,13 +25,14 @@ type ContainerProps = {
     scroll?: boolean;
     backButton?: Boolean;
     headerText?: string,
+    scrollToEnd?: boolean
 
 }
-const Container = ({ children, hideFooter, borderRadius, footer, scroll, headerText, backButton, backButtonPress }: ContainerProps) => {
+const Container = ({ children, hideFooter, borderRadius, footer, scroll, scrollToEnd, headerText, backButton, backButtonPress }: ContainerProps) => {
     const insets = useSafeAreaInsets();
     const scrollRef = useRef();
     const _keyboardDidShow = () => {
-        scrollRef.current?.scrollToEnd({ animated: true });
+        if (scrollToEnd) scrollRef.current?.scrollToEnd({ animated: true });
     };
     useEffect(() => {
         Keyboard.addListener('keyboardDidShow', _keyboardDidShow);

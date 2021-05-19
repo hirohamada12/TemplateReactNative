@@ -14,9 +14,9 @@ function ScreenWithoutScrolling(props) {
     var backgroundStyle = props.backgroundColor ? { backgroundColor: props.backgroundColor } : {};
     var insetStyle = { paddingTop: props.unsafe ? 0 : insets.top };
     return (<react_native_1.KeyboardAvoidingView style={[preset.outer, backgroundStyle]} behavior={isIos ? "padding" : null} keyboardVerticalOffset={screen_presets_1.offsets[props.keyboardOffset || "none"]}>
-            <react_native_1.StatusBar barStyle={props.statusBar || "light-content"}/>
-            <react_native_1.View style={[preset.inner, style, insetStyle]}>{props.children}</react_native_1.View>
-        </react_native_1.KeyboardAvoidingView>);
+        <react_native_1.StatusBar barStyle={props.statusBar || "light-content"} />
+        <react_native_1.View style={[preset.inner, style, insetStyle]}>{props.children}</react_native_1.View>
+    </react_native_1.KeyboardAvoidingView>);
 }
 function ScreenWithScrolling(props) {
     var insets = react_native_safe_area_context_1.useSafeArea();
@@ -25,13 +25,13 @@ function ScreenWithScrolling(props) {
     var backgroundStyle = props.backgroundColor ? { backgroundColor: props.backgroundColor } : {};
     var insetStyle = { paddingTop: props.unsafe ? 0 : insets.top };
     return (<react_native_1.KeyboardAvoidingView style={[preset.outer, backgroundStyle]} behavior={isIos ? "padding" : null} keyboardVerticalOffset={screen_presets_1.offsets[props.keyboardOffset || "none"]}>
-            <react_native_1.StatusBar barStyle={props.statusBar || "light-content"}/>
-            <react_native_1.View style={[preset.outer, backgroundStyle, insetStyle]}>
-                <react_native_1.ScrollView style={[preset.outer, backgroundStyle]} contentContainerStyle={[preset.inner, style]}>
-                    {props.children}
-                </react_native_1.ScrollView>
-            </react_native_1.View>
-        </react_native_1.KeyboardAvoidingView>);
+        <react_native_1.StatusBar barStyle={props.statusBar || "light-content"} />
+        <react_native_1.View style={[preset.outer, backgroundStyle, insetStyle]}>
+            <react_native_1.ScrollView style={[preset.outer, backgroundStyle]} contentContainerStyle={[preset.inner, style]}>
+                {props.children}
+            </react_native_1.ScrollView>
+        </react_native_1.View>
+    </react_native_1.KeyboardAvoidingView>);
 }
 /**
  * The starting component on every screen in the app.
@@ -40,10 +40,10 @@ function ScreenWithScrolling(props) {
  */
 function Screen(props) {
     if (screen_presets_1.isNonScrolling(props.preset)) {
-        return <ScreenWithoutScrolling {...props}/>;
+        return <ScreenWithoutScrolling {...props} />;
     }
     else {
-        return <ScreenWithScrolling {...props}/>;
+        return <ScreenWithScrolling {...props} />;
     }
 }
 exports.Screen = Screen;

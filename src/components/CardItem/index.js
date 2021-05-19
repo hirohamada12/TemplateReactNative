@@ -21,10 +21,10 @@ export const CardItem = props => {
                 <Text style={{ ...style.textStyle, marginLeft: 5 }}>{tenKTV}</Text>
             </View>
             <View style={style.otherContainer}>
-                <View style={{ ...style.identityLogo, marginLeft: 10 }}>
-                    <Image style={{ width: '100%', height: '100%' }} source={require('../../assets/icons/IdentityLogo.png')} />
+                <View style={{ ...style.locationLogo, marginLeft: 12 }}>
+                    <Image style={{ width: '100%', height: '100%' }} source={require('../../assets/icons/LocationLogo.png')} />
                 </View>
-                <Text style={{ ...style.textStyle, marginLeft: 5 }}>{diaChi}</Text>
+                <Text style={{ ...style.textStyle, marginLeft: 12 }}>{diaChi}</Text>
             </View>
             <Text style={style.statusText}>
                 Chưa kiểm tra
